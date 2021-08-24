@@ -13,8 +13,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _questionIndex = 0;
-  var questions = [
+  int _questionIndex = 0;
+  static const questions = [
     {
       'questionText': 'Món bún yêu thích của bạn là gì?',
       'answers': ['Bún đậu mắm tôm', 'Bún bò huế', 'Bún mắm']
@@ -27,12 +27,12 @@ class _MyAppState extends State<MyApp> {
 
   void _answerQuestion() {
     setState(() {
-      var newIndex = _questionIndex;
-      if (_questionIndex < questions.length - 1) {
-        newIndex = _questionIndex + 1;
-      }
+      // var newIndex = _questionIndex;
+      // if (_questionIndex < questions.length - 1) {
+      //   newIndex = _questionIndex + 1;
+      // }
       // change state
-      _questionIndex = newIndex;
+      _questionIndex = _questionIndex + 1;
     });
   }
 
@@ -45,16 +45,23 @@ class _MyAppState extends State<MyApp> {
           title: Text("Fluttering"),
           backgroundColor: Colors.green,
         ),
-        body: Column(
-          children: <Widget>[
-            Question(
-              questions[_questionIndex]['questionText'],
-            ),
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((ans) => Answer(ans, _answerQuestion))
-                .toList()
-          ],
-        ),
+        body: _questionIndex < questions.length
+            ? Column(
+                children: <Widget>[
+                  Question(
+                    questions[_questionIndex]['questionText'] as String,
+                  ),
+                  ...(questions[_questionIndex]['answers'] as List<String>)
+                      .map((ans) => Answer(ans, _answerQuestion))
+                      .toList()
+                ],
+              )
+            : Center(
+                child: Text(
+                  'U là trùi',
+                  style: TextStyle(fontSize: 36),
+                ),
+              ),
       ),
     );
   }
