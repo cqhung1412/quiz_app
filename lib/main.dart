@@ -5,25 +5,25 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
   var questions = [
     'What\'s your most hated animal?',
     'What\'s your favorite animal meat?'
   ];
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      var newIndex = questionIndex;
-      if (questionIndex < questions.length - 1) {
-        newIndex = questionIndex + 1;
+      var newIndex = _questionIndex;
+      if (_questionIndex < questions.length - 1) {
+        newIndex = _questionIndex + 1;
       }
       // change state
-      questionIndex = newIndex;
+      _questionIndex = newIndex;
     });
   }
 
@@ -37,15 +37,15 @@ class MyAppState extends State<MyApp> {
         body: Column(
           children: <Widget>[
             Text(
-              questions[questionIndex],
+              questions[_questionIndex],
             ),
             ElevatedButton(
               child: Text("Yes, I do"),
-              onPressed: () => answerQuestion(),
+              onPressed: () => _answerQuestion(),
             ),
             ElevatedButton(
               child: Text("No, I don't"),
-              onPressed: () => answerQuestion(),
+              onPressed: () => _answerQuestion(),
             ),
           ],
         ),
