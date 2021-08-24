@@ -22,16 +22,20 @@ class Result extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Text(
-            resultPhrase,
-            style: TextStyle(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
+          Container(
+            margin: const EdgeInsets.all(10),
+            child: Text(
+              resultPhrase,
+              style: TextStyle(
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.green),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              primary: Colors.green,
+              side: BorderSide(color: Colors.green),
             ),
             onPressed: resetQuiz,
             child: Text('Restart Quiz!'),

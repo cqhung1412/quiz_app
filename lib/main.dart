@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   int _totalScore = 0;
   static const questions = [
     {
-      'questionText': 'Món bún yêu thích của bạn là gì?',
+      'questionText': 'Món bún bạn thích là gì?',
       'answers': [
         {'text': 'Bún đậu mắm tôm', 'score': 1},
         {'text': 'Bún bò huế', 'score': 5},
@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey,
+        // backgroundColor: Colors.grey,
         appBar: AppBar(
           title: Text("Fluttering"),
           backgroundColor: Colors.green,
